@@ -9,6 +9,15 @@
     android:background="@color/black"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/connectionMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="90dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="40sp"/>
+
     <ImageButton
         android:id="@+id/speakBtn"
         android:layout_width="wrap_content"
@@ -27,7 +36,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/sentMessage"
+        android:id="@+id/outputMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"

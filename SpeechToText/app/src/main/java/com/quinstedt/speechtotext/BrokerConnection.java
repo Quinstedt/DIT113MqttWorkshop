@@ -4,6 +4,8 @@ package com.quinstedt.speechtotext;
     https://www.eclipse.org/paho/files/android-javadoc/index.html
  */
 
+import static com.quinstedt.speechtotext.Utils.delay;
+
 import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
@@ -19,22 +21,16 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class BrokerConnection extends AppCompatActivity {
 
-
-
-    public static final String MAIN_TOPIC = "SpeechApp";
-    //public static final String LOCALHOST = "10.0.2.2";
-    //public static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
-
-    public static final String ONLINEHOST = "broker.mqttdashboard.com";
-    public static final String MQTT_SERVER = "tcp://" + ONLINEHOST + ":8000";
-    public static final String CLIENT_ID = "nicoDit113";
+    public static final String SUB_TOPIC = "SpeechApp/Connection";
+    public static final String LOCALHOST = "10.0.2.2";
+    private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
+    public static final String CLIENT_ID = "DIT113-SpeechToText";
     public static final int QOS = 0;
 
-
     private boolean isConnected = false;
-    public MqttClient mqttClient;
+    private MqttClient mqttClient;
     Context context;
-    TextView text;
+    TextView connectionMessage;
 
     public BrokerConnection(Context context){
         this.context = context;
@@ -54,10 +50,9 @@ public class BrokerConnection extends AppCompatActivity {
                     isConnected = true;
                     final String successfulConnection = "Connected to MQTT broker";
                     Log.i(CLIENT_ID, successfulConnection);
-                    Toast.makeText(context, successfulConnection, Toast.LENGTH_SHORT).show();
-                    mqttClient.subscribe(MAIN_TOPIC, QOS, null);
-                    mqttClient.publish(MAIN_TOPIC, "Hello World", QOS, null);
 
+                    Toast.makeText(context, successfulConnection, Toast.LENGTH_LONG).show();
+                    mqttClient.subscribe(SUB_TOPIC, QOS, null);
                 }
 
                 @Override
@@ -82,12 +77,12 @@ public class BrokerConnection extends AppCompatActivity {
                  */
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
-                    if(topic.equals(MAIN_TOPIC)){
+                    if(topic.equals(SUB_TOPIC)){
                         String messageMQTT = message.toString();
-                        text.setText(messageMQTT);
+                        connectionMessage.setText(messageMQTT);
                         Log.i(CLIENT_ID, "Message" + messageMQTT);
                     }else {
-                        Log.i(CLIENT_ID, "[MQTT] Topic: " + topic + " | Message: " + message.toString());
+                        Log.i("BROKER: ", "[MQTT] Topic: " + topic + " | Message: " + message.toString());
                     }
                 }
 
@@ -97,6 +92,10 @@ public class BrokerConnection extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void setConnectionMessage(TextView textView) {
+        this.connectionMessage = textView;
     }
 
     /**
@@ -119,11 +118,13 @@ public class BrokerConnection extends AppCompatActivity {
 
 
     public TextView getMessage() {
-        return this.text;
+        return this.connectionMessage;
     }
     public MqttClient getMqttClient() {
         return mqttClient;
     }
+
+
 
 
 

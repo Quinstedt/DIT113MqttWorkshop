@@ -1,8 +1,11 @@
 package com.quinstedt.speechtotext;
+import static com.quinstedt.speechtotext.Utils.findColor;
+
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,10 +20,12 @@ public class MainActivity extends AppCompatActivity {
     protected static final int RESULT_SPEECH = 1;
     private ImageButton speakBtn;
     private TextView textDisplay;
-    private TextView sentMessage;
+    private TextView outputMessage;
+    //private TextView connectionMessage;
     private BrokerConnection brokerConnection;
     int QOS = 1;
-    public static final String MAIN_TOPIC = "SpeechApp";
+    public static final String PUB_TOPIC = "SpeechApp";
+
 
 
     @Override
@@ -28,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textDisplay = findViewById(R.id.textDisplay);
-        sentMessage = findViewById(R.id.sentMessage);
+        outputMessage = findViewById(R.id.outputMessage);
+        //connectionMessage = findViewById(R.id.connectionMessage);
         speakBtn = findViewById(R.id.speakBtn);
 
         brokerConnection = new BrokerConnection(getApplicationContext());
+        brokerConnection.setConnectionMessage(findViewById(R.id.connectionMessage));
         brokerConnection.connectToMqttBroker();
 
         // make the mic imageButton clickable
@@ -65,27 +72,17 @@ public class MainActivity extends AppCompatActivity {
             // display the first index of the array, which will contain our value
             textDisplay.setText(text.get(0));
             // verify the string using helper method that will also publish the result
-            checkCommand(textDisplay.toString());
+            publishColor(text.get(0));
         }
     }
 
-    protected  void checkCommand(String message){
-        String errorMessage = "Error: Could not get a color";
 
-        String match = "default";
-        for(Colors color: Colors.values()){
-            if(message.toUpperCase().contains(color.getName())){
-                match = color.getValue();
-            }
-        }
+    public void publishColor(String message){
+        String output = findColor(message);
+        Log.i("**** COLOR *****", output);
 
-        if(!match.equals("default")){
-            brokerConnection.mqttClient.publish(MAIN_TOPIC, match, QOS, null);
-            String messageFormat = "Sent: " + match;
-            sentMessage.setText(messageFormat);
-        }else{
-            Toast.makeText(getApplicationContext(), match, Toast.LENGTH_LONG).show();
-            sentMessage.setText(errorMessage);
-        }
+        brokerConnection.getMqttClient().publish(PUB_TOPIC, output ,QOS, null);
     }
+
+
 }
