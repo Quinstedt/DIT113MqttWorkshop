@@ -22,11 +22,11 @@ public class BrokerConnection extends AppCompatActivity {
 
 
     public static final String MAIN_TOPIC = "SpeechApp";
-    //public static final String LOCALHOST = "10.0.2.2";
+    public static final String LOCALHOST = "10.0.2.2";
     //public static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
 
     public static final String ONLINEHOST = "broker.mqttdashboard.com";
-    public static final String MQTT_SERVER = "tcp://" + ONLINEHOST + ":8000";
+    public static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":8000";
     public static final String CLIENT_ID = "nicoDit113";
     public static final int QOS = 0;
 
