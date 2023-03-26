@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         String match = "default";
         for(Colors color: Colors.values()){
-            if(message.toUpperCase().contains(color.getName())){
+            if(message.toLowerCase().contains(color.getName())){
                 match = color.getValue();
             }
         }
