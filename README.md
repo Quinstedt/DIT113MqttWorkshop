@@ -27,7 +27,7 @@ The android app has a basic voice recognition that identifies different color co
 |-------|---|
 |Add Wifi information to the arduino code.<br> *(Doesn't work with iphone's share wifi or eduroam)*| `ssid = <WIFI name>`<br> `password = <the wifi password>`|
 |Open a terminal and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address"<br> paste it in the arduino "server" variable| Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig`|
-|Go to the mosquitto folder in your computer, below "General configuration" add:| `listener 1883 0.0.0.0 ` <br> `allow_anonymous true` |
+|Go to the mosquitto folder and open mosquitto.config file in your computer, below "General configuration" add:| `listener 1883 0.0.0.0 ` <br> `allow_anonymous true` |
 |Open terminal and navigate to mosquitto root folder | Windows: `mosquitto -c mosquitto.conf -v `<br> MacOS: `brew services start mosquitto` |
 |In Android Studio, go to Device manager and download an emulator| Minimun API 30. [Download an Emulator](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Set-up-an-Emulator)|
 |Activate the microphone|Open *Extended Controls* and activate the microphone settings <br><br> ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/90027419/228104899-651069f6-8368-41f3-9a11-74f43ccd4cfb.gif) |
@@ -65,7 +65,7 @@ The new color MUST have it's own topic (*It cannot be the exact same topic as yo
 
 
 ##Contributors
-
+.. add your team members 
 
 
 
