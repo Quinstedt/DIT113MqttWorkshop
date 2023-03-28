@@ -1,10 +1,8 @@
 package com.quinstedt.speechtotext;
 
 /*
-    https://www.eclipse.org/paho/files/android-javadoc/index.html
+    This class handles the broker connection of the app.
  */
-
-import static com.quinstedt.speechtotext.Utils.delay;
 
 import android.content.Context;
 import android.util.Log;
@@ -21,11 +19,16 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class BrokerConnection extends AppCompatActivity {
 
-    public static final String SUB_TOPIC = "SpeechApp/Connection";
-    public static final String LOCALHOST = "10.0.2.2";
-    private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";
-    public static final String CLIENT_ID = "DIT113-SpeechToText";
-    public static final int QOS = 0;
+    /* TODO:
+        define a topic for the hello world message
+     */
+    public static final String SUB_TOPIC = ""; // topic to subscribe to
+
+
+    public static final String LOCALHOST = "10.0.2.2"; // Ip address of the local host
+    private static final String MQTT_SERVER = "tcp://" + LOCALHOST + ":1883";   // the server uses tcp protocol on the local host ip and listens to the port 1883
+    public static final String CLIENT_ID = "DIT113-SpeechToText";   // the app client ID name
+    public static final int QOS = 0;    // quality of service
 
     private boolean isConnected = false;
     private MqttClient mqttClient;
@@ -41,18 +44,18 @@ public class BrokerConnection extends AppCompatActivity {
     public void connectToMqttBroker() {
         if (!isConnected) {
             mqttClient.connect(CLIENT_ID, "", new IMqttActionListener() {
-                /**
-                 *  Add below the topic that the app subscribe to
-                 *  and add the method for that topic in messageArrived(...)
-                 */
+
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
                     isConnected = true;
                     final String successfulConnection = "Connected to MQTT broker";
                     Log.i(CLIENT_ID, successfulConnection);
-
                     Toast.makeText(context, successfulConnection, Toast.LENGTH_LONG).show();
-                    mqttClient.subscribe(SUB_TOPIC, QOS, null);
+                    /* TODO
+                        Subscribe to the connection topic.
+                        Note: set the subscriptionCallback to null
+                    */
+
                 }
 
                 @Override
@@ -70,20 +73,30 @@ public class BrokerConnection extends AppCompatActivity {
                     Log.w(CLIENT_ID, connectionLost);
                     Toast.makeText(context, connectionLost, Toast.LENGTH_SHORT).show();
                 }
+
                 /**
-                 *  Method that retrieve the message inside a topic
-                 *
-                 *  Note: change to a switch instead for better structure
+                 * Function that handles the messages received from the broker
+                 * @param topic- the topic that has been received
+                 * @param message - the message received
+                 * @throws Exception
                  */
+
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
-                    if(topic.equals(SUB_TOPIC)){
+                    /* TODO
+                        The code commented below is missing the if-condition.
+                        Uncomment the code provide the correct if-condition so that
+                        the connectionMessage can be display.
+                     */
+
+                   /* if()){
                         String messageMQTT = message.toString();
                         connectionMessage.setText(messageMQTT);
-                        Log.i(CLIENT_ID, "Message" + messageMQTT);
+                        Log.i(CLIENT_ID, "Message" + messageMQTT);  // prints in the console
                     }else {
-                        Log.i("BROKER: ", "[MQTT] Topic: " + topic + " | Message: " + message.toString());
-                    }
+                        // prints in the console
+                        Log.i(CLIENT_ID, "[MQTT] Topic: " + topic + " | Message: " + message.toString());
+                    }*/
                 }
 
                 @Override
@@ -94,32 +107,15 @@ public class BrokerConnection extends AppCompatActivity {
         }
     }
 
+    /**
+     * Function that set the textview reference from the MainActivity to the connectionMessage textview
+     * in the brokerConnection.
+     * @param textView
+     */
     public void setConnectionMessage(TextView textView) {
         this.connectionMessage = textView;
     }
 
-    /**
-     * This method is use to create the message that will be publish
-     * add the mMqttClient.publish(<topic>, <message >, QOS, null);
-     * to specify the topic as in ControlPad or Joystick Class
-     *
-     * @param message - the message that we send to the broker
-     * @param actionDescription - the action description that will be printed
-     */
-    public void publishMqttMessage(String message, String actionDescription) {
-        if (!isConnected) {
-            final String notConnected = "Not connected (yet)";
-            Log.e(CLIENT_ID, notConnected);
-            Toast.makeText(context, notConnected, Toast.LENGTH_SHORT).show();
-            return;
-        }
-        Log.i(CLIENT_ID, actionDescription);
-    }
-
-
-    public TextView getMessage() {
-        return this.connectionMessage;
-    }
     public MqttClient getMqttClient() {
         return mqttClient;
     }

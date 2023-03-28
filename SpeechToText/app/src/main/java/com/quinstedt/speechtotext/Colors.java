@@ -1,11 +1,11 @@
 package com.quinstedt.speechtotext;
-
+/* TODO
+    Add at least one more colors
+ */
 public enum Colors {
-    DEFAULT("" ),
     BLUE("blue"),
     RED("red"),
-    BLACK("black"),
-    PURPLE("purple");
+    BLACK("black");
 
     private final String name;
 
