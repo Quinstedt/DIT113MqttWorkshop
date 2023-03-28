@@ -48,8 +48,8 @@ A few implementation are missing, they are mark with a TODO. <br>
 - [ ] MainActivity class - define a publish topic for the color commands and publish the color command
 
 ## Arduino IDE/Wio Terminal
+- [ ] Add the topic
 - [ ] Complete the implemention of the setColorAndPrintMessage(String message) function, for the color *red*, *black* and *blue* this should be done by using the incomming messages.
-- [ ] After adding the new color to the col
 
 ## Introducing a new color with it's topic
 *:bangbang::no_entry: IMPORTANT:* Dont do this task before completing the previous task.<br>
