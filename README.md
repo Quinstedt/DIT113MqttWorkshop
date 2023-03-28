@@ -40,7 +40,7 @@ Remember to create different issues, use labels and use feature branches :smile:
 
 ## Android studio
 A few implementation are missing, they are mark with a TODO. <br>
-**:bangbang::warning: NOTE:** You dont need to understand how android studio or the voice recognition works, you should focus on understanding the MQTT connection is used. I have added comments and additional documentation for those that may be interested. We will cover Android Studio during the Android studio lecture. 
+**:bangbang::warning: NOTE:** You dont need to understand how android studio or the voice recognition works, you should focus on understanding the MQTT connection. I have added comments and additional documentation for those that may be interested. We will cover Android Studio during the Android studio lecture. 
 
 - [ ] Create a class diagram for the android class in "com.quinstedt.speechtotext" folder. <br>	*You should only include the 4 classes in that folder*
 - [ ] Add a picture to the README
@@ -64,7 +64,7 @@ The new color MUST have it's own topic (*It cannot be the exact same topic as yo
 - [ ] Add a picture to the README
 
 
-##Contributors
+## Contributors
 .. add your team members 
 
 
