@@ -7,7 +7,8 @@ The android app has a basic voice recognition that identifies different color co
 <br><br>
 ![ezgif com-resize](https://user-images.githubusercontent.com/90027419/228066704-302f6189-5b18-4e1e-9545-aa5c35e911e8.gif)
  
-### Class diagram
+## System diagrams
+
 ### Android class diagram 
 [ADD PICTURE]
 ### MQTT communication between Components
@@ -29,11 +30,12 @@ The android app has a basic voice recognition that identifies different color co
 |Open a terminal and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address"<br> paste it in the arduino "server" variable| Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig`|
 |Go to the mosquitto folder and open mosquitto.config file in your computer, below "General configuration" add:| `listener 1883 0.0.0.0 ` <br> `allow_anonymous true` |
 |Open terminal and navigate to mosquitto root folder | Windows: `mosquitto -c mosquitto.conf -v `<br> MacOS: `brew services start mosquitto` |
-|In Android Studio, go to Device manager and download an emulator| Minimun API 30. [Download an Emulator](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Set-up-an-Emulator)|
+|In Android Studio, go to Device manager and download an emulator| Minimun API 30. <br> [How to download an Emulator?](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Set-up-an-Emulator)|
 |Activate the microphone|Open *Extended Controls* and activate the microphone settings <br><br> ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/90027419/228104899-651069f6-8368-41f3-9a11-74f43ccd4cfb.gif) |
 
+## Common Errors
+
 > [Common Error With Mosquitto](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Mosquitto-Common-Error)
-<br>
 
 # Tasks
 Remember to create different issues, use labels and use feature branches :smile:
