@@ -27,7 +27,7 @@ The Android app has a basic voice recognition that identifies different color co
 
 | Description | Command/Clarification |
 |-------|---|
-|Create a header file| `#define SSID "<WiFi name>" `<br>  `#define PASSWORD "<the WiFi password>" ` <br>  `#define my_IPv4 "<ipv4>"`|
+|Create a header file. [See instructions](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/How-to-create-a-header-file-for-your-personal-data)| `#define SSID "<WiFi name>" `<br>  `#define PASSWORD "<the WiFi password>" ` <br>  `#define my_IPv4 "<ipv4>"`|
 | To find your IP for my_IPv4, open a terminal run the command and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address"  | Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig` |
 | Go to the mosquitto folder and open mosquitto.config file in your computer, below "General configuration" add: | `listener 1883 0.0.0.0 ` <br> `allow_anonymous true` |
 | Open terminal and navigate to mosquitto root folder | Windows: `mosquitto -c mosquitto.conf -v `<br> MacOS: `brew services start mosquitto` |
