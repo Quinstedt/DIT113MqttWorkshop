@@ -3,7 +3,7 @@
 The goal of the workshop is to give student practical knowledge and deeper understanding on how to work with MQTT. Ensuring that they can get familirize with how to create MQTT topics and how to use them while publishing and subscribing. Moreover, the student gain a general understanding of how to handle incomming messages from the broker. 
 
 ## Description
-The android app has a basic voice recognition that identifies different color commands which are then send to the Wio Terminal using MQTT
+The android app has a basic voice recognition that identifies different color commands which are then send to the Wio Terminal using MQTT.
 <br><br>
 ![ezgif com-resize](https://user-images.githubusercontent.com/90027419/228066704-302f6189-5b18-4e1e-9545-aa5c35e911e8.gif)
  
@@ -24,10 +24,10 @@ The android app has a basic voice recognition that identifies different color co
  
 ## Setup Guide
 
-| Description | Command |
+| Description | Command/Clarification |
 |-------|---|
 |Add Wifi information to the arduino code.<br> *(Doesn't work with iphone's share wifi or eduroam)*| `ssid = <WIFI name>`<br> `password = <the wifi password>`|
-|Open a terminal and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address"<br> paste it in the arduino "server" variable| Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig`|
+|Open a terminal run the command and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address" paste it in the arduino "server" variable| Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig`|
 |Go to the mosquitto folder and open mosquitto.config file in your computer, below "General configuration" add:| `listener 1883 0.0.0.0 ` <br> `allow_anonymous true` |
 |Open terminal and navigate to mosquitto root folder | Windows: `mosquitto -c mosquitto.conf -v `<br> MacOS: `brew services start mosquitto` |
 |In Android Studio, go to Device manager and download an emulator| Minimun API 30. <br> [How to download an Emulator?](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Set-up-an-Emulator)|
@@ -38,15 +38,16 @@ The android app has a basic voice recognition that identifies different color co
 > [Common Error With Mosquitto](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Mosquitto-Common-Error)
 
 # Tasks
-Remember to create different issues, use labels and use feature branches :smile:
+Remember to create different issues, use labels and use feature branches :smile:<br>
+A few implementation are missing and your job is to implement them, they are mark with a TODO in the code. <br>
 
 ## Android studio
-A few implementation are missing, they are mark with a TODO. <br>
 **:bangbang::warning: NOTE:** You dont need to understand how android studio or the voice recognition works, you should focus on understanding the MQTT connection. I have added comments and additional documentation for those that may be interested. We will cover Android Studio during the Android studio lecture. 
+<br>Before moving to the implementation of the missing parts in the past, start with the first task here. That will provide you a better understanding of the code that you need to use in Android Studio.
 
 - [ ] Create a class diagram for the android class in "com.quinstedt.speechtotext" folder. <br>	*You should only include the 4 classes in that folder*
 - [ ] Add a picture to the README
-- [ ] BrokerConnection class - define a subscription topic and subscribe to the connection
+- [ ] BrokerConnection class - define a subscription topic and subscribe to the connection message
 - [ ] MainActivity class - define a publish topic for the color commands and publish the color command
 
 ## Arduino IDE/Wio Terminal
