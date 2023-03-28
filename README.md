@@ -1,6 +1,6 @@
 # DIT113MqttWorkshop
 ## Purpose
-The goal of the workshop is to give student practical knowledge and deeper understanding on how to work with MQTT. Ensuring that they can get familirize with how to create MQTT topics and how to use them while publishing and subscribing. Moreover, the student gain a general understanding of how to handle incomming messages from the broker. 
+The goal of the workshop is to give student practical knowledge and deeper understanding on how to work with MQTT. Ensuring that they can get fimiliar with how to create MQTT topics and how to use them while publishing and subscribing. Moreover, the student gain a general understanding of how to handle incomming messages from the broker. 
 
 ## Description
 The android app has a basic voice recognition that identifies different color commands which are then send to the Wio Terminal using MQTT.
