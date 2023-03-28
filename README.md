@@ -48,10 +48,10 @@ A few implementation are missing, they are mark with a TODO. <br>
 - [ ] MainActivity class - define a publish topic for the color commands and publish the color command
 
 ## Arduino IDE/Wio Terminal
-- [ ] Add the topic
+- [ ] Add the topics for publish and subscribe
 - [ ] Complete the implemention of the setColorAndPrintMessage(String message) function, for the color *red*, *black* and *blue* this should be done by using the incomming messages.
 
-## Introducing a new color with it's topic
+## Introducing a new color with it's own topic
 *:bangbang::no_entry: IMPORTANT:* Dont do this task before completing the previous task.<br>
 Now that you can change the color of your Wio terminal using the voice commands in your Android App :sunglasses::thumbsup:, we are going to introduce at least one more color.
 The new color MUST have it's own topic (*It cannot be the exact same topic as you use for the previous colors*).
