@@ -23,11 +23,12 @@ The Android app has a basic voice recognition that identifies different color co
 >  Android studio <br>[Download here](https://developer.android.com/studio)
  
 ## Setup Guide
+:warning: *Doesn't work with iPhone's shared WiFi or eduroam*
 
 | Description | Command/Clarification |
 |-------|---|
-| Add WiFi information to the arduino code.<br> *(Doesn't work with iPhone's shared WiFi or eduroam)* | `ssid = <WiFi name>`<br> `password = <the WiFi password>`|
-| Open a terminal run the command and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address" paste it in the arduino "server" variable | Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig` |
+|Create a header file| `#define SSID "<WiFi name>" `<br>  `#define PASSWORD "<the WiFi password>" ` <br>  `#define my_IPv4 "<ipv4>"`|
+| To find your IP for my_IPv4, open a terminal run the command and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address"  | Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig` |
 | Go to the mosquitto folder and open mosquitto.config file in your computer, below "General configuration" add: | `listener 1883 0.0.0.0 ` <br> `allow_anonymous true` |
 | Open terminal and navigate to mosquitto root folder | Windows: `mosquitto -c mosquitto.conf -v `<br> MacOS: `brew services start mosquitto` |
 | In Android Studio, go to Device manager and download an emulator | Minimun API 30. <br> [How to download an Emulator?](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Set-up-an-Emulator) |
@@ -38,8 +39,10 @@ The Android app has a basic voice recognition that identifies different color co
 > [Common Errors With Mosquitto](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Mosquitto-Common-Error)
 
 # Tasks
-Remember to create different issues, use labels and use feature branches :smile:<br>
+Remember to create different issues, use labels and use feature branches. The more you practice the better you get at it. :smile:<br>
 A few implementation are missing and your job is to implement them, they are mark with a **TODO** in the code. <br>
+
+- [ ] Add the header file to gitignore. You dont want your personal data out.
 
 ## Android studio
 **:bangbang::warning: NOTE:** You don't need to understand how Android Studio or the voice recognition works, you should focus on understanding the MQTT connection. I have added comments and additional documentation for those that may be interested. We will cover Android Studio during the Android Studio lecture. 
