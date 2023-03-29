@@ -1,4 +1,5 @@
 package com.quinstedt.speechtotext;
+import static com.quinstedt.speechtotext.Utils.findColor;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -17,16 +18,13 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     protected static final int RESULT_SPEECH = 1;
-    private ImageButton speakBtn;       // The image button for the microphone
-    private TextView textDisplay;       // Displays the text input from the microphone
-    private TextView outputMessage;     // Used for the hello world message
-    private BrokerConnection brokerConnection;  // Declare the brokerConnection
-    int QOS = 0;
-
-    /* TODO
-        define a topic to publish the color
-     */
-    public static final String PUB_TOPIC = "";
+    private ImageButton speakBtn;
+    private TextView textDisplay;
+    private TextView outputMessage;
+    //private TextView connectionMessage;
+    private BrokerConnection brokerConnection;
+    int QOS = 1;
+    public static final String PUB_TOPIC = "SpeechApp";
 
 
 
@@ -34,13 +32,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Connecting the attributes to their IDs in the activity layout
         textDisplay = findViewById(R.id.textDisplay);
         outputMessage = findViewById(R.id.outputMessage);
+        //connectionMessage = findViewById(R.id.connectionMessage);
         speakBtn = findViewById(R.id.speakBtn);
 
-        // Creating a brokerConnection
         brokerConnection = new BrokerConnection(getApplicationContext());
         brokerConnection.setConnectionMessage(findViewById(R.id.connectionMessage));
         brokerConnection.connectToMqttBroker();
@@ -75,40 +71,17 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<String> text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             // display the first index of the array, which will contain our value
             textDisplay.setText(text.get(0));
-            // find if a color is given and publish it to the broker
+            // verify the string using helper method that will also publish the result
             publishColor(text.get(0));
         }
     }
 
-    /**
-     * Function that check if a color exist in the string from the microphone
-     * and publish it to the broker.
-     * @param message - String obtained from the microphone
-     */
+
     public void publishColor(String message){
-        String output = "";
-        /* TODO
-            1. Use the helper function findColor and publish the color.
-            2. When the basic connection is working, add the code to handle the new color (must have it's own topic)
-         */
+        String output = findColor(message);
+        Log.i("**** COLOR *****", output);
 
-        Log.i("Publishing Color:", output);     //Prints in the android console
-    }
-
-    /**
-     * Helper function to find the colors in the string
-     * @param message
-     * @return
-     */
-    public static String findColor(String message){
-
-        String output = "";
-        for(Colors color: Colors.values()){
-            if(message.toLowerCase().contains(color.getName())){
-                output = color.getName();
-            }
-        }
-        return output;
+        brokerConnection.getMqttClient().publish(PUB_TOPIC, output ,QOS, null);
     }
 
 

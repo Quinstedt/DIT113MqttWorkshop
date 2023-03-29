@@ -1,12 +1,11 @@
 package com.quinstedt.speechtotext;
-/* TODO
-    Add at least one more colors
-    Choice from the list: https://wiki.seeedstudio.com/Wio-Terminal-LCD-Basic
- */
+
 public enum Colors {
+    DEFAULT("" ),
     BLUE("blue"),
     RED("red"),
-    BLACK("black");
+    BLACK("black"),
+    PURPLE("purple");
 
     private final String name;
 

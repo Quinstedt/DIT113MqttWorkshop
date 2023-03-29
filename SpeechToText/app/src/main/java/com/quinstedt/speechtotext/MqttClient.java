@@ -9,10 +9,6 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 /*
-    This class creates the Mqtt client and contains the most important (basic) methods.
-    Feel free to create a subscribeToAll and a unsubscribeToAll methods.
-
-    Extra material:
     https://www.eclipse.org/paho/files/android-javadoc/index.html
     https://www.hivemq.com/blog/mqtt-client-library-enyclopedia-paho-android-service/
  */
@@ -47,7 +43,7 @@ public class MqttClient {
             e.printStackTrace();
         }
     }
-    // receive message
+    // receive information
     public void subscribe(String topic, int qos, IMqttActionListener subscriptionCallback) {
         try {
             mMqttAndroidClient.subscribe(topic, qos, null, subscriptionCallback);
@@ -63,7 +59,7 @@ public class MqttClient {
             e.printStackTrace();
         }
     }
-    // send message
+    // sending information
     public void publish(String topic, String message, int qos, IMqttActionListener publishCallback) {
         MqttMessage mqttMessage = new MqttMessage();
         mqttMessage.setPayload(message.getBytes());
