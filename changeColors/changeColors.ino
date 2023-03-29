@@ -1,21 +1,26 @@
+/****************************************************************************
+  Code base on "MQTT Exmple for SeeedStudio Wio Terminal".
+  Author: Salman Faris
+  Source: https://www.hackster.io/Salmanfarisvp/mqtt-on-wio-terminal-4ea8f8
+*****************************************************************************/
+
 #include <rpcWiFi.h>
 #include"TFT_eSPI.h"
 #include <PubSubClient.h>
 
+
 // Update these with values suitable for your network.
-// Home Wifi
-const char* ssid = "****"; // WiFi Name
-const char* password = "*****";  // WiFi Password
+const char* ssid = SSID; // WiFi Name
+const char* password = PASSWORD;  // WiFi Password
 
 
 /**********  HOW TO FIND YOUR MOSQUITTO BROKER ADDRESS*******************
   In Windows command prompt, use the command:   ipconfig
   Copy the Ip address of "Wireless LAN adapter Wi-Fi: IPv4 Address"
   Enter the IP in the sever variable below.
-  
 *************************************************************************/
 
-const char* server = "***";  // MQTT Broker URL
+const char* server = my_IPv4;  // MQTT Broker URL
 
 /* TODO
     add the corresponding topics
@@ -155,4 +160,15 @@ void loop() {
     reconnect();
   }
   client.loop();
+
+/*   Use to continuesly execute something in the loop.
+     sensor data?! Hint hint  ヾ(o✪‿✪o)ｼ 
+  
+  long now = millis();
+  if (now - lastMsg > 2000) {
+    lastMsg = now;
+​
+  }
+
+*/
 }
