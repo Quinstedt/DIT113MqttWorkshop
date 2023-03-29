@@ -16,11 +16,14 @@ The Android app has a basic voice recognition that identifies different color co
 
 ## Tools
 >  Eclipse Mosquitto broker <br>[Download here](https://mosquitto.org/download/)<br>
-
+ 
 >  Arduino IDE <br>[WINDOWS](https://docs.arduino.cc/software/ide-v1/tutorials/Windows),  [MAC](https://docs.arduino.cc/software/ide-v1/tutorials/macOS), 
- [LINUX](https://docs.arduino.cc/software/ide-v1/tutorials/Linux) 
+ [LINUX](https://docs.arduino.cc/software/ide-v1/tutorials/Linux) <br>
+ 
+>  Wio terminal<br>[Get started](https://wiki.seeedstudio.com/Wio-Terminal-Getting-Started/). Set up your wio terminal. <br> 
+>  In addition download the following libraries: [rpcWiFi ](https://wiki.seeedstudio.com/Wio-Terminal-Network-Overview#libraries-installation) and PubSubClient by Nick O'Leary's<br>
 
->  Android studio <br>[Download here](https://developer.android.com/studio)
+>  Android studio <br>[Download here](https://developer.android.com/studio)<br>
  
 ## Setup Guide
 :warning: *Doesn't work with iPhone's shared WiFi or eduroam*
