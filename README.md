@@ -41,6 +41,10 @@ The Android app has a basic voice recognition that identifies different color co
 
 > [Common Errors With Mosquitto](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Mosquitto-Common-Error)
 
+> [How to get started without Android Studio](https://www.youtube.com/watch?v=Jl7AKsiFuZg) - Video
+
+> [Live Demo + Common issues with Android Studio](https://youtu.be/2gdqRJAIbkk)  - Video
+
 # Tasks
 Remember to create different issues, use labels and use feature branches. The more you practice the better you get at it. :smile:<br>
 A few implementation are missing and your job is to implement them, they are mark with a **TODO** in the code. <br>
