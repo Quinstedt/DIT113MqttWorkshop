@@ -34,7 +34,7 @@ The Android app has a basic voice recognition that identifies different color co
 | To find your IP for my_IPv4, open a terminal run the command and select the IP "Wireless LAN adapter Wi-Fi: IPv4 Address"  | Windows: `ipconfig `<br> MacOS: `/sbin/ifconfig` |
 | Go to the mosquitto folder and open mosquitto.config file in your computer, below "General configuration" add: | `listener 1883 0.0.0.0 ` <br> `allow_anonymous true` |
 | Open terminal and navigate to mosquitto root folder | Windows: `mosquitto -c mosquitto.conf -v `<br> MacOS: `brew services start mosquitto` |
-| In Android Studio, go to Device manager and download an emulator | Minimun API 30. <br> [How to download an Emulator?](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Set-up-an-Emulator) |
+| In Android Studio, go to Device manager and download an emulator | Use API 30 or API 31. <br> [How to download an Emulator?](https://github.com/Quinstedt/DIT113MqttWorkshop/wiki/Set-up-an-Emulator) |
 | Activate the microphone | Open *Extended Controls* and activate the microphone settings <br><br> ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/90027419/228104899-651069f6-8368-41f3-9a11-74f43ccd4cfb.gif) |
 
 ## Common Errors
